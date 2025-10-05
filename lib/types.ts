@@ -26,6 +26,7 @@ export type DiffLine = {
   left: string;
   right: string;
   status: DiffStatus;
+  charDiff?: DiffChars;
 };
 
 export type PayloadStore = {
