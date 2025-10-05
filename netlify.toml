@@ -1,7 +1,0 @@
-[build]
-  base = "json-differ-online-demo/"
-  publish = ".next"
-  command = "npm run build"
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
