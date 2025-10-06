@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 
 import DiffViewer from "@/components/DiffViewer/DiffViewer";
+import DiffViewerSkeleton from "@/components/DiffViewerSkeleton";
 import { LoadingIcon } from "@/components/Icons";
 import {
   Select,
@@ -346,11 +347,15 @@ export default function Home() {
         </div>
       )}
 
+      {loading && <DiffViewerSkeleton />}
+
       {showResult && diffs && diffs.length > 0 && (
-        <div className="mt-8">
-          <h2 className="animate-fade-in mb-4 text-xl font-bold">
-            Comparison Results
-          </h2>
+        <div className="mt-8 mb-40">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="animate-fade-in text-background mb-4 text-xl font-bold">
+              Comparison Results
+            </h2>
+          </div>
           <div
             className="animate-fade-in"
             style={{ animationDelay: "0.5s", animationFillMode: "both" }}
