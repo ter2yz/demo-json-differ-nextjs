@@ -54,7 +54,7 @@ export default function Home() {
 
       // wait 30s (allow cancellation during wait)
       await new Promise<void>((resolve, reject) => {
-        const timeoutId = setTimeout(resolve, 1000);
+        const timeoutId = setTimeout(resolve, 30000);
         abortControllerRef.current?.signal.addEventListener("abort", () => {
           clearTimeout(timeoutId);
           reject(new Error("Request was cancelled"));
