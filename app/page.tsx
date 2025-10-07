@@ -54,7 +54,7 @@ export default function Home() {
 
       // wait 30s (allow cancellation during wait)
       await new Promise<void>((resolve, reject) => {
-        const timeoutId = setTimeout(resolve, 30000);
+        const timeoutId = setTimeout(resolve, 1000);
         abortControllerRef.current?.signal.addEventListener("abort", () => {
           clearTimeout(timeoutId);
           reject(new Error("Request was cancelled"));
@@ -176,7 +176,7 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-foreground container mx-auto min-h-screen px-4 py-8">
+    <div className="bg-foreground mx-auto min-h-screen w-full px-4 py-8">
       <div className="border-background/20 mx-auto mb-6 flex max-w-4xl justify-between border-b">
         <h1 className="text-background mb-6 text-3xl font-bold">
           JSON Payload Differ
@@ -350,7 +350,7 @@ export default function Home() {
       {loading && <DiffViewerSkeleton />}
 
       {showResult && diffs && diffs.length > 0 && (
-        <div className="mt-8 mb-40">
+        <div className="mt-8 mb-40 w-full xl:px-20">
           <div className="mx-auto max-w-4xl">
             <h2 className="animate-fade-in text-background mb-4 text-xl font-bold">
               Comparison Results
