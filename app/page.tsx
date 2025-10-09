@@ -54,7 +54,7 @@ export default function Home() {
 
       // wait 30s (allow cancellation during wait)
       await new Promise<void>((resolve, reject) => {
-        const timeoutId = setTimeout(resolve, 30000);
+        const timeoutId = setTimeout(resolve, 1000);
         abortControllerRef.current?.signal.addEventListener("abort", () => {
           clearTimeout(timeoutId);
           reject(new Error("Request was cancelled"));
@@ -85,12 +85,13 @@ export default function Home() {
 
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setShowResult(true);
+      setMessage("");
     } catch (err: unknown) {
       const errorMessage = getErrorMessage(err);
       setMessage(`❌ ${errorMessage}`);
       setDiffs([]);
+      setShowResult(false);
     } finally {
-      setMessage("");
       setLoading(false);
       abortControllerRef.current = null;
     }
@@ -138,12 +139,13 @@ export default function Home() {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setDiffs(data.diffs || []);
       setShowResult(true);
+      setMessage("");
     } catch (err: unknown) {
       const errorMessage = getErrorMessage(err);
       setMessage(`❌ ${errorMessage}`);
       setDiffs([]);
+      setShowResult(false);
     } finally {
-      setMessage("");
       setLoading(false);
       abortControllerRef.current = null;
     }
